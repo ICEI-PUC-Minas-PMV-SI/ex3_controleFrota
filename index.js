@@ -25,7 +25,7 @@ const start = async () => {
   try {
     await connectDb();
     app.listen(port, () => {
-      console.log(`Example app listening at http://localhost:${port}`)
+      console.log(`App listening at http://44.202.238.93/:${port}`)
     });
   } catch (error) {
     console.log('Could not start the server!', error);
