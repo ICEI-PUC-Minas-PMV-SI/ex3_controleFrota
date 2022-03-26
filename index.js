@@ -1,5 +1,3 @@
-// const util= require('util');
-// const encoder = new util.TextEncoder('utf-8');
 const express = require('express')
 const { connectDb, disconnectDb } = require('./models/Database');
 const Car = require('./models/Car-model')
