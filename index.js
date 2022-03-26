@@ -16,7 +16,7 @@ app.use(
 const carRoutes = require('./routes/carRoutes')
 
 app.get('/', (req, res) => {
-  res.json({ message: 'Oi Express!' })
+  res.json({ message: 'Hello Express!' })
 })
 
 app.use('./cars', carRoutes)
