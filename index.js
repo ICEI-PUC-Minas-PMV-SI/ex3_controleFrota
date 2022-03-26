@@ -2,7 +2,7 @@ const express = require('express')
 const { connectDb, disconnectDb } = require('./models/Database');
 const Car = require('./models/Car-model')
 const app = express()
-const port = 8080
+const port = 3000
 app.use(express.json())
 
 app.use(
@@ -14,6 +14,10 @@ app.use(
 //ROUTES
 
 const carRoutes = require('./routes/carRoutes')
+
+app.get('/', (req, res) => {
+  res.json({ message: 'Oi Express!' })
+})
 
 app.use('./cars', carRoutes)
 

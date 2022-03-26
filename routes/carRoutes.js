@@ -1,5 +1,4 @@
 const router = require('express').Router()
-
 const Car = require('../models/Car-model')
 
 router.post('/', async (req, res) => {
