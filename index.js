@@ -21,15 +21,15 @@ app.get('/', (req, res) => {
 
 app.use('./cars', carRoutes)
 
-const start = async () => {
+const start = async() => {
   try {
-    await connectDb();
-    app.listen(port, () => {
-      console.log(`App listening at http://44.202.238.93:${port}`)
-    });
+      await connectDb();
+      app.listen(() => {
+          console.log(`App listening at awsIp:${port}`)
+      });
   } catch (error) {
-    console.log('Could not start the server!', error);
+      console.log('Could not start the server!', error);
   }
 }
 
-start();
+start()

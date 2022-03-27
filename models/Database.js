@@ -1,8 +1,7 @@
 const { MongoClient } = require('mongodb');
-const config = require('../config/config');
 const chalk = require('chalk');
 
-const uri = config.bd_uriString;
+const uri = 'mongodb+srv://nodejs_api:5Xq5eeT74MPiMe6r@cluster0.lh6en.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 const dbName = 'aprendendoMongo';
 
