@@ -14,10 +14,22 @@ connectDb
 const CarRegister = mongoose.model('CarRegister', carModel);
 
 const register = new CarRegister({
-  modelo: 'MT03',
-  fabricante: 'Yamaha',
-  anoFabricacao: '2020',
-  anoModelo: '2021'
+  modelo: 'Ferrari F40',
+  fabricante: 'Ferrari',
+  anoFabricacao: '1991',
+  anoModelo: '1991',
+  combustivel: 'Gasolina',
+  carroceria: 'esportiva',
+  resumo: {
+    descricao: 'Veículo de ostentação',
+    autor: 'Cleverson Rocha'
+  },
+  reservado: true
 });
 
-register.save();
+register.save()
+  .then(() => {
+    console.log(chalk.yellow('Registro salvo!'))
+  }).catch(err => {
+    console.log(err);
+  })
