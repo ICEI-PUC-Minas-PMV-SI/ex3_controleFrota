@@ -1,35 +1,23 @@
-const express = require('express')
-const { connectDb, disconnectDb } = require('./models/Database');
-const Car = require('./models/Car-model')
-const app = express()
-const port = 8080
-app.use(express.json())
+const mongoose = require('mongoose');
+const connectDb = require('./models/database')
+const chalk = require('chalk');
+const carModel = require('./models/car-model');
 
-app.use(
-  express.urlencoded({
-    extended: true,
-  }),
-)
+//Conexão ao banco de dados
+connectDb
+  .then(() => {
+    console.log(chalk.bgGreen.black('Conectado ao MongoDB!'))
+  })
+  .catch((err) => console.log(err));
 
-//ROUTES
+//Model para registro de carros
+const CarRegister = mongoose.model('CarRegister', carModel);
 
-const carRoutes = require('./routes/carRoutes')
+const register = new CarRegister({
+  modelo: 'MT03',
+  fabricante: 'Yamaha',
+  anoFabricacao: '2020',
+  anoModelo: '2021'
+});
 
-app.get('/', (req, res) => {
-  res.json({ message: 'Hello Express!' })
-})
-
-app.use('./cars', carRoutes)
-
-const start = async() => {
-  try {
-      await connectDb();
-      app.listen(() => {
-          console.log(`App listening at awsIp:${port}`)
-      });
-  } catch (error) {
-      console.log('Could not start the server!', error);
-  }
-}
-
-start()
+register.save();
