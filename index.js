@@ -1,7 +1,30 @@
+const express =  require('express');
+const app = express();
 const mongoose = require('mongoose');
 const connectDb = require('./models/database')
 const chalk = require('chalk');
+const bodyParser = require('body-parser');
 const carModel = require('./models/car-model');
+
+//Configuração para arquivos staticos
+app.use(express.static('/public'));
+//Configuração para utilizar formulários
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+//Configurando a view engine para trabalhar com ejs
+app.set('view engine', 'ejs');
+
+//Rotas
+app.get('/', (req, res) => {
+  res.send('Oi!');
+});
+
+app.get('/cadastro', (req, res) => {
+  res.render('create');
+});
+
+app.listen(8080, () => {});
+
 
 //Conexão ao banco de dados
 connectDb
@@ -9,27 +32,3 @@ connectDb
     console.log(chalk.bgGreen.black('Conectado ao MongoDB!'))
   })
   .catch((err) => console.log(err));
-
-//Model para registro de carros
-const CarRegister = mongoose.model('CarRegister', carModel);
-
-const register = new CarRegister({
-  modelo: 'Ferrari F40',
-  fabricante: 'Ferrari',
-  anoFabricacao: '1991',
-  anoModelo: '1991',
-  combustivel: 'Gasolina',
-  carroceria: 'esportiva',
-  resumo: {
-    descricao: 'Veículo de ostentação',
-    autor: 'Cleverson Rocha'
-  },
-  reservado: true
-});
-
-register.save()
-  .then(() => {
-    console.log(chalk.yellow('Registro salvo!'))
-  }).catch(err => {
-    console.log(err);
-  })

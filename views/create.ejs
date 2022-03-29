@@ -1,0 +1,19 @@
+<%- include ('partials/header.ejs') %>
+
+  <body>
+    <!-- <%- include ('partials/navbar.ejs') %> -->
+
+    <h1>Cadastro de consulta</h1>
+    <hr>
+    <form action="">
+      <input type="text" name="name" id="name" placeholder="Nome do paciente" class="form-control">
+      <input type="email" name="email" id="email" placeholder="email@email.com" class="form-control">
+      <input type="text" name="cpf" id="cpf" placeholder="CPF" class="form-control">
+      <input type="text" name="description" id="description" placeholder="Descrição" class="form-control">
+      <input type="date" name="data" id="data" placeholder="DD/MM/AAAA" class="form-control">
+      <input type="time" name="time" id="time" class="form-control">
+      <button class="btn btn-success">Agendar</button>
+    </form>
+
+  </body>
+  <%- include ('partials/footer.ejs') %>
