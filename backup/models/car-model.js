@@ -12,11 +12,10 @@ const carModel = new mongoose.Schema({
     descricao: String,
     autor: String
   },
-  data: {
-    type: Date,
-    default: Date.now
-  },
-  reservado: Boolean
+  data: Date,
+  time: String,
+  reservado: Boolean,
+  finished: Boolean
 });
 
 module.exports = carModel;
