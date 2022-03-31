@@ -26,7 +26,7 @@ const connectDb = async() => {
     try {
         await database;
         app.listen(port, () => {
-            console.log(`Alicação escutando a porta ${port}`)
+            console.log(`Aplicação escutando a porta ${port}`)
         });
     } catch (error) {
         console.log('Não foi possível iniciar o servidor!', error);
