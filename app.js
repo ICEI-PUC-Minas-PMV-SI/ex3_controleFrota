@@ -11,16 +11,11 @@ app.use(bodyParser.json());
 //Rotas
 const indexRoutes = require('./routes/index')
 const usersRoutes = require('./routes/users');
+const carsRoutes = require('./routes/cars');
 
 app.use('/', indexRoutes);
 app.use('/users', usersRoutes);
-
-//Conexão com o mongo Atlas
-
-// const connectDb= async () => {
-//     await database;
-// }
-// connectDb();
+app.use('/cars', carsRoutes);
 
 const connectDb = async() => {
     try {
