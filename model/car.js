@@ -13,7 +13,6 @@ const CarSchema = new Schema({
   KmProxManu: { type: String, require: true },
   kmIn: { type: String, require: true },
   kmOut: { type: String, require: true },
-  block: { type: Boolean },
   created: { type: Date, default: Date.now }
 });
 
