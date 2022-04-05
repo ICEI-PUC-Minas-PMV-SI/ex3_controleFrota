@@ -7,7 +7,7 @@ const { tokenKey, tokenExpires } = require('../config/config')
 
 //Token para autenticação
 const createUserToken = (userId) => {
-  return jwt.sign({ id: userId }, tokenKey, { expiresIn: tokenExpires});
+  return jwt.sign({ id: userId }, tokenKey, { expiresIn: tokenExpires });
 };
 
 //Buscar usuários cadastrados
@@ -22,7 +22,7 @@ router.get('/', async (req, res) => {
 
 //Criar usuários na base de dados
 router.post('/create', async (req, res) => {
-  const { email, password } = req.body;
+  const { email, password } = req.body.nomeCondutor;
   if (!email || !password) return res.status(400).send({ error: 'Dados insuficientes!' });
 
   try {
@@ -40,7 +40,7 @@ router.post('/create', async (req, res) => {
 
 //Autenticação do usuário
 router.post('/auth', async (req, res) => {
-  const { email, password } = req.body;
+  const { email, password } = req.body.nomeCondutor;
   if (!email || !password) return res.status(400).send({ error: 'Dados insuficientes!' });
 
   try {
@@ -55,6 +55,19 @@ router.post('/auth', async (req, res) => {
 
   } catch (err) {
     return res.status(500).send({ error: 'Usuário não registrado!' });
+  }
+});
+
+router.delete('/delete', async (req, res) => {
+  const { cpf } = req.body.nomeCondutor;
+  if (!cpf) return res.status(400).send({ error: 'Dados insuficientes!' });
+
+  try {
+    const user = await Users.delete(req.body.nomeCondutor);
+    return res.status(201).send({ user });
+
+  } catch (err) {
+    return res.status(500).send({ error: 'Usuário não encontrado!' });
   }
 });
 

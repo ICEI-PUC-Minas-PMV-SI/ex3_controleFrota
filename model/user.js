@@ -4,20 +4,24 @@ const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
 
-  email: {
-    type: String,
-    require: true,
-    unique: true,
-    lowercase: true
+  nomeCondutor: {
+    nome: { type: String, require: true },
+    sobrenome: { type: String, require: true },
+    dataNasc: { type: String, require: true },
+    cpf: { type: String, require: true },
+    email: { type: String, require: true, unique: true, lowercase: true },
+    password: { type: String, require: true, select: false },
   },
-  password: {
-    type: String,
-    require: true,
-    select: false
+  endereco: {
+    endereco: { type: String, require: true },
+    numero: { type: String, require: true },
+    complemento: { type: String, require: true },
   },
-  created: {
-    type: Date,
-    default: Date.now
+  cnhCondutor: {
+    cnh: { type: String, require: true },
+    categoria: { type: Array, require: true },
+    priHab: { type: String, require: true },
+    validadeHab: { type: String, require: true },
   }
 });
 

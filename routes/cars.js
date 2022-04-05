@@ -15,11 +15,18 @@ router.get('/', async (req, res) => {
 
 // Criar registro na base de dados
 router.post('/create', async (req, res) => {
-  const { placa } = req.body;
-  try {
-    if (await Cars.findOne({ placa })) return res.status(400).send({ error: 'Veículo já cadastrado!' });
+  const carro = req.body;
+  const { placa } = carro;
 
-    const car = await Cars.create(req.body);
+  //findOne( { placa: req.body.placa } )
+  //findOne( { placa: carro.placa } )
+  //findOne( { placa: placa } )
+  //findOne( { placa } )
+
+  try {
+    if (await Cars.findOne({ placa })) return res.status(409).send({ error: 'Veículo já cadastrado!' });
+
+    const car = await Cars.create(carro);
     res.status(201).json({ message: 'Cadastro realizado com sucesso!' })
 
   } catch (err) {
