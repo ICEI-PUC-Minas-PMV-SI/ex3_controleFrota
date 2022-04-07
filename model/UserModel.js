@@ -9,7 +9,7 @@ const UserSchema = new Schema({
     sobrenome: { type: String, require: true },
     dataNasc: { type: String, require: true },
     cpf: { type: String, require: true },
-    email: { type: String, require: true, unique: true, lowercase: true },
+    email: { type: String, require: true, index: true, lowercase: true },
     password: { type: String, require: true, select: false },
   },
   endereco: {
@@ -20,7 +20,7 @@ const UserSchema = new Schema({
   cnhCondutor: {
     cnh: { type: String, require: true },
     categoria: { type: Array, require: true },
-    priHab: { type: String, require: true },
+    primHab: { type: String, require: true },
     validadeHab: { type: String, require: true },
   }
 });

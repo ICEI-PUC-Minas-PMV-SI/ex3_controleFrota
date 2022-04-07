@@ -5,7 +5,7 @@ const database = require('./middlewares/database')
 const port = 8080;
 
 //Body parser => capturar arquivos json
-app.use(bodyParser.urlencoded({ extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 //Rotas
@@ -17,7 +17,8 @@ app.use('/', indexRoutes);
 app.use('/users', usersRoutes);
 app.use('/cars', carsRoutes);
 
-const connectDb = async() => {
+//Conexão ao MongoDB
+const connectDb = async () => {
     try {
         await database;
         app.listen(port, () => {
@@ -26,8 +27,8 @@ const connectDb = async() => {
     } catch (error) {
         console.log('Não foi possível iniciar o servidor!', error);
     }
-  }
-  
-  connectDb();
+}
+
+connectDb();
 
 module.exports = app;

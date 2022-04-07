@@ -11,8 +11,8 @@ const CarSchema = new Schema({
   combustivel: { type: String, require: true },
   kmTotal: { type: String, require: true },
   manutencao: {
-    kmProxManu: { type: String},
-    dataManu: { type: String},
+    kmProxManu: { type: String },
+    dataManu: { type: String },
     descriManu: { type: String }
   },
   created: { type: Date, default: Date.now }
