@@ -1,3 +1,4 @@
 node_modules
 sshKey
-config.js
+# config.js
+.eslintrc
