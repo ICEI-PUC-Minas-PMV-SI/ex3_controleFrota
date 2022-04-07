@@ -27,7 +27,7 @@ router.get('/:cpf', async (req, res) => {
     const user = await Users.findOne({ "nomeCondutor.cpf": cpf });
 
     if (!user) {
-      res.status(422).send({ error: 'O usuário não foi encontrado!' })
+      res.status(422).send({ error: 'Usuário não encontrado!' })
     } else {
       return res.send(user);
     }
@@ -56,23 +56,40 @@ router.post('/', async (req, res) => {
 });
 
 //Updade - atualização dos dados de usuário (PATCH - Atualização parcial dos dados)
-
 router.patch('/:cpf', async (req, res) => {
   const cpf = req.params.cpf
   try {
-    const updateUser = await Users.updateOne({ "nomeCondutor.cpf": cpf });
-
-    if (!updateUser) {
-      res.status(422).send({ error: 'O usuário não foi encontrado!' })
+    let userUpdate = await Users.findOne({ "nomeCondutor.cpf": cpf });
+    if (!userUpdate) {
+      res.status(422).send({ error: 'Usuário não encontrado!' })
     } else {
+      userUpdate = await Users.updateOne(req.body);
       return res.status(200).send({ mensage: 'Usuário atualizado!' });
     }
 
   } catch (err) {
+    console.log(err)
     return res.status(500).send({ error: 'Erro na consulta de usuário!' });
   }
 });
 
+//Deletar usuários
+router.delete('/:cpf', async (req, res) => {
+  const cpf = req.params.cpf
+  try {
+    let userDelete = await Users.findOne({ "nomeCondutor.cpf": cpf });
+    if (!userDelete) {
+      res.status(422).send({ error: 'Usuário não encontrado!' })
+    } else {
+      userDelete = await Users.deleteOne({ "nomeCondutor.cpf": cpf });
+      return res.status(200).send({ mensage: 'Usuário removido!' });
+    }
+
+  } catch (err) {
+    console.log(err)
+    return res.status(500).send({ error: 'Erro na consulta de usuário!' });
+  }
+});
 
 
 // Autenticação do usuário
