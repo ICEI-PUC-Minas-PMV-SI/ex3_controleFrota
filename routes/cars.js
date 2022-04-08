@@ -17,11 +17,6 @@ router.post('/', async (req, res) => {
   const carRegister = req.body;
   const { placa } = carRegister;
 
-  //findOne( { placa: req.body.placa } )
-  //findOne( { placa: carRegister.placa } )
-  //findOne( { placa: placa } )
-  //findOne( { placa } )
-
   try {
     if (await Cars.findOne({ placa })) return res.status(409).send({ error: 'Veículo já cadastrado!' });
 
