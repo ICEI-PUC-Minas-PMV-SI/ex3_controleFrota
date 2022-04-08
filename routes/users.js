@@ -63,7 +63,8 @@ router.patch('/:cpf', async (req, res) => {
     if (!userUpdate) {
       res.status(422).send({ error: 'Usuário não encontrado!' })
     } else {
-      userUpdate = await Users.updateOne(req.body);
+      userUpdate = await Users.updateOne({ "nomeCondutor.cpf": cpf }, req.body);
+      console.log(userUpdate)
       return res.status(200).send({ mensage: 'Usuário atualizado!' });
     }
 
