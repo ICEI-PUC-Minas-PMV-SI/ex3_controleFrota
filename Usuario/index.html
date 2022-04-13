@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://unpkg.com/primitive-ui/dist/css/main.css" rel="stylesheet">
+</head>
+<body>
+    <div class="small-container">
+        <form>
+            <div>
+                <label for="nome">Primeiro nome:</label>
+                <input type="text" name="nome" id="nome" maxlength="20" required>
+                <p id="nomeInvalido"></p>
+                <label for="sobrenome">Sobrenome:</label>
+                <input type="text" name="sobrenome" id="sobrenome" maxlength="50" required>
+                <p id="sobrenomeInvalido"></p>
+            </div>
+            <div>
+                <label for="dia">Informe o dia da data do seu aniversário:</label>
+                <input type="number" name="dia" id="dia" min="1" max="31" required>
+                <p id="diaInvalido"></p>
+                <label for="mes">Informe o mês da data do seu aniversário:</label>
+                <input type="number" name="mes" id="mes" min="1" max="12" required>
+                <p id="mesInvalido"></p>
+                <label for="ano">Informe o ano da data do seu aniversário:</label>
+                <input type="number" name="ano" id="ano" min="1900" max="2004" required>
+                <p id="anoInvalido"></p>
+            </div>
+            <div class="emailBox">
+                <label for="email">Informe o seu endereço de e-mail:</label><br>
+                <input type="email" id="email" size="64" maxLength="64" placeholder="email@exemplo.com" title="" required>
+                <p id="emailInvalido"></p>
+            </div>
+            <div>
+                <label for="senha">Senha (Mínimo de 8 caracteres):</label>
+                <input type="password" id="senha" name="password" minlength="8" required>
+                <p id="senhaInvalido"></p>
+                <label for="confirmarSenha">Confirmar senha:</label>
+                <input type="password" id="confirmarSenha" name="password" minlength="8">
+                <p id="confirmarSenhaInvalido"></p>
+            </div>
+            <button id="btnsubmit">CLIQUE AQUI</button>
+            <!--
+            <input id="submit" type="submit" value="Enviar">
+            -->
+        </form>
+    </div>
+    <script src="usersClass.js"></script>
+</body>
+</html>
